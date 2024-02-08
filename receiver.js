@@ -3,9 +3,7 @@ window.onload = function () {
 
     // Example array of image URLs
     const imageUrls = [
-        'https://example.com/image1.jpg',
-        'https://example.com/image2.jpg',
-        'https://example.com/image3.jpg',
+        'https://api.imgbb.com/1/upload'
         // Add more image URLs as needed
     ];
 
