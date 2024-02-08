@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Receiver</title>
+    <title>Image Receiver</title>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
+    <h1>Image Receiver</h1>
+    <div id="imageContainer"></div>
 
-    <h1>Data Receiver</h1>
-    <button onclick="fetchData()">Fetch Data</button>
-    <div id="dataDisplay"></div>
-    
-    <!-- Include the receiver.js script -->
     <script src="receiver.js"></script>
-
 </body>
 </html>
