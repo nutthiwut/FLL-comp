@@ -1,6 +1,6 @@
 function fetchData() {
   // Replace 'https://nutthiwut.github.io/FLL-comp2/' with the actual API or server endpoint
-  const apiUrl = 'https://example.com/api/images';
+  const apiUrl = 'https://nutthiwut.github.io/FLL-comp2/';
 
   fetch(apiUrl)
     .then(response => {
