@@ -1,21 +1,13 @@
-// Example array of image URLs
-const imageUrls = [
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/200',
-    'https://via.placeholder.com/250',
-    'https://via.placeholder.com/300',
-    'https://via.placeholder.com/350',
-    // Add more placeholder image URLs as needed
-];
+document.addEventListener('DOMContentLoaded', function () {
+  const container = document.getElementById('imageContainer');
 
-window.onload = function () {
-    const imageContainer = document.getElementById('imageContainer');
+  // Retrieve stored images from localStorage
+  const storedImages = JSON.parse(localStorage.getItem('images')) || [];
 
-    // Display each image in the array
-    imageUrls.forEach(imageUrl => {
-        const imgElement = document.createElement('img');
-        imgElement.src = imageUrl;
-        imgElement.alt = 'Placeholder Image';
-        imageContainer.appendChild(imgElement);
-    });
-};
+  // Display images
+  storedImages.forEach(function (imageUrl) {
+    const imageElement = document.createElement('img');
+    imageElement.src = imageUrl;
+    container.appendChild(imageElement);
+  });
+});
