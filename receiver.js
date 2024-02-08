@@ -41,7 +41,7 @@ function displayImages(images) {
     container.appendChild(imageElement);
   });
   function fetchData() {
-  fetch('https://example.com/api/images')
+  fetch('https://nutthiwut.github.io/FLL-comp2/')
     .then(response => {
       if (!response.ok) {
         throw new Error(`Network response was not ok: ${response.status}`);
