@@ -3,7 +3,7 @@ window.onload = function () {
 
     // Example array of image URLs
     const imageUrls = [
-        'https://api.imgbb.com/1/upload'
+        'https://nutthiwut.github.io/FLL-comp2/'
         // Add more image URLs as needed
     ];
 
