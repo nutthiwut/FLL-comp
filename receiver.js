@@ -1,20 +1,19 @@
-// receiver.js
+// Example array of image URLs
+const imageUrls = [
+    'https://example.com/image1.jpg',
+    'https://example.com/image2.jpg',
+    'https://example.com/image3.jpg',
+    // Add more image URLs as needed
+];
 
-function fetchData() {
-    // Replace 'https://your-cloud-server.com/api/data' with the actual URL of your cloud server endpoint
-    fetch('https://your-cloud-server.com/api/data')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Display the retrieved data on the webpage
-            const dataDisplay = document.getElementById('dataDisplay');
-            dataDisplay.innerHTML = '<p>Received Data: ' + JSON.stringify(data) + '</p>';
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
+window.onload = function () {
+    const imageContainer = document.getElementById('imageContainer');
+
+    // Display each image in the array
+    imageUrls.forEach(imageUrl => {
+        const imgElement = document.createElement('img');
+        imgElement.src = imageUrl;
+        imgElement.alt = 'Image';
+        imageContainer.appendChild(imgElement);
+    });
+};
