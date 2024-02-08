@@ -40,4 +40,20 @@ function displayImages(images) {
     imageElement.src = imageUrl;
     container.appendChild(imageElement);
   });
+  function fetchData() {
+  fetch('https://example.com/api/images')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Handle the received data
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+    });
+}
 }
