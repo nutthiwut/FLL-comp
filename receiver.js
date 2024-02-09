@@ -1,6 +1,6 @@
 async function fetchData() {
   try {
-    const response = await fetch('http://localhost:3000');
+    const response = await fetch('http://localhost:3000/api/data');
     const data = await response.json();
 
     // Assuming data is an array of image URLs
