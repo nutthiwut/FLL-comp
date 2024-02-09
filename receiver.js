@@ -1,28 +1,26 @@
-async function uploadImage() {
-  const input = document.getElementById('imageInput');
-  const file = input.files[0];
+async function fetchData() {
+  try {
+    const response = await fetch('http://localhost:3000/api/data');
+    const data = await response.json();
 
-  if (file) {
-    try {
-      const formData = new FormData();
-      formData.append('image', file);
-
-      const response = await fetch('http://localhost:3000/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (response.ok) {
-        alert('Image uploaded successfully!');
-      } else {
-        const data = await response.json();
-        alert(`Failed to upload image. Error: ${data.error}`);
-      }
-    } catch (error) {
-      console.error('Error uploading image:', error);
-      alert('Failed to upload image. Please try again.');
-    }
-  } else {
-    alert('Please select an image to upload.');
+    // Assuming data is an array of image URLs
+    displayImages(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    alert('Failed to fetch images. Please try again.');
   }
 }
+
+function displayImages(images) {
+  const container = document.getElementById('imageContainer');
+  container.innerHTML = '';
+
+  images.forEach(function (imageUrl) {
+    const imageElement = document.createElement('img');
+    imageElement.src = imageUrl;
+    container.appendChild(imageElement);
+  });
+}
+
+// Fetch data when the page loads
+fetchData();
