@@ -1,33 +1,28 @@
-// receiver.js
+async function uploadImage() {
+  const input = document.getElementById('imageInput');
+  const file = input.files[0];
 
-document.addEventListener('DOMContentLoaded', function () {
-  function fetchData() {
-    fetch('http://localhost:3000/api/data')  // Adjust the URL to your Node.js server endpoint
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Network response was not ok: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        displayImages(data);
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
+  if (file) {
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+
+      const response = await fetch('http://localhost:3000/api/upload', {
+        method: 'POST',
+        body: formData,
       });
+
+      if (response.ok) {
+        alert('Image uploaded successfully!');
+      } else {
+        const data = await response.json();
+        alert(`Failed to upload image. Error: ${data.error}`);
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      alert('Failed to upload image. Please try again.');
+    }
+  } else {
+    alert('Please select an image to upload.');
   }
-
-  function displayImages(images) {
-    const container = document.getElementById('imageContainer');
-    container.innerHTML = '';
-
-    images.forEach(function (imageUrl) {
-      const imageElement = document.createElement('img');
-      imageElement.src = imageUrl;
-      container.appendChild(imageElement);
-    });
-  }
-
-  // Fetch data when the page loads
-  fetchData();
-});
+}
